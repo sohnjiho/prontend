@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍱한메추🍱</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: #ff6f61;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .left {
+            flex: 6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+        }
+        .image-map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .image-map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .right {
+            flex: 4;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .right iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #ff6f61;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        양식
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="image-map-container">
+                <img src="./europemap.png" alt="카페 이미지 맵" usemap="#food-map" id="responsive-image">
+                <map name="food-map" id="food-map">
+                    <area shape="rect" alt="더보일" title="더보일" coords="406,522,444,560" href="./양식/더보일.html" target="" />
+                    <area shape="rect" alt="웜포레스트" title="웜포레스트" coords="732,566,762,600" href="./양식/웜포레스트.html" target="" />
+                    <area shape="rect" alt="카페몬드" title="카페몬드" coords="930,144,962,180" href="./양식/몬드.html" target="" />
+                    <area shape="rect" alt="화목정" title="화목정" coords="966,312,1006,350" href="./양식/화목정.html" target="" />
+                    <area shape="rect" alt="컴포터블" title="컴포터블" coords="1014,288,1048,326" href="./양식/컴포터블피자.html" target="" />
+                    <area shape="rect" alt="대잠맨션" title="대잠맨션" coords="1110,546,1146,588" href="./양식/대잠맨션.html" target="" />
+                    <area shape="rect" alt="쿠킹빌리지" title="쿠킹빌리지" coords="1348,740,1384,786" href="./양식/쿠킹빌리지.html" target="" />
+                    <area shape="rect" alt="덕수파스타" title="덕수파스타" coords="1328,798,1358,838" href="./양식/덕수파스타.html" target="" />
+                    <area shape="rect" alt="논스탠다드" title="논스탠다드" coords="1370,802,1408,840" href="./양식/논스탠다드.html" target="" />
+                    <area shape="rect" alt="서가앤쿡" title="서가앤쿡" coords="1604,692,1640,732" href="./양식/서가앤쿡.html" target="" />
+                    <area shape="rect" alt="믹스토랑" title="믹스토랑" coords="1688,882,1724,924" href="./양식/믹스토랑.html" target="" />
+                    <area shape="rect" alt="유난" title="유난" coords="1824,724,1856,760" href="./양식/유난.html" target="" />
+                    <area shape="rect" alt="델이든" title="델이든" coords="2070,540,2104,578" href="./양식/델이든.html" target="" /></map>
+            </div>
+        </div>
+        <div class="right">
+            <iframe name="iframe" src="about:blank"></iframe>
+        </div>
+    </div>
+    <footer>
+        © 2024 양식 페이지 | <a href="homepage2.html" target="_blank">홈으로 돌아가기</a>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const image = document.getElementById('responsive-image');
+            const areas = document.querySelectorAll('map area');
+            const iframe = document.querySelector('iframe');
+
+            // 이미지 로드가 완료되면 좌표 조정
+            image.onload = function() {
+                adjustCoords(); // 이미지 크기에 맞춰 좌표 조정
+            };
+
+            // 좌표 비율을 계산하여 조정하는 함수
+            function adjustCoords() {
+                const containerWidth = image.clientWidth;  // 이미지가 보이는 영역의 너비
+                const containerHeight = image.clientHeight;  // 이미지가 보이는 영역의 높이
+                const imageWidth = image.naturalWidth;  // 이미지의 원본 너비
+                const imageHeight = image.naturalHeight;  // 이미지의 원본 높이
+
+                // 이미지의 실제 비율을 계산합니다.
+                const scaleX = containerWidth / imageWidth;
+                const scaleY = containerHeight / imageHeight;
+
+                // 각 area 요소에 대해 좌표를 조정합니다.
+                areas.forEach(area => {
+                    const originalCoords = area.getAttribute('coords').split(',').map(Number);
+                    const x1 = originalCoords[0];
+                    const y1 = originalCoords[1];
+                    const x2 = originalCoords[2];
+                    const y2 = originalCoords[3];
+
+                    // 좌표를 비례적으로 변환
+                    const newX1 = Math.round(x1 * scaleX);
+                    const newY1 = Math.round(y1 * scaleY);
+                    const newX2 = Math.round(x2 * scaleX);
+                    const newY2 = Math.round(y2 * scaleY);
+
+                    // 비례적으로 조정된 좌표를 area에 설정
+                    area.coords = `${newX1},${newY1},${newX2},${newY2}`;
+                });
+            }
+
+            // 리사이즈 이벤트 발생 시 좌표 업데이트
+            window.addEventListener('resize', adjustCoords);
+
+            // 페이지 로드 후 첫 번째 좌표 계산
+            adjustCoords();
+
+            // 이미지 맵의 area 클릭 시 iframe에 링크 로드
+            areas.forEach(area => {
+                area.addEventListener('click', function(event) {
+                    event.preventDefault(); // 기본 동작 막기
+                    iframe.src = area.href; // iframe에 링크 로드
+                });
+            });
+        });
+    </script>
+</body>
+</html>

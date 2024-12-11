@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘은 배 터지게 먹자</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #4a4a4a;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: linear-gradient(to right, #ff7f50, #ff6347, #ff4500); 
+        }
+
+        .container {
+            background-color: #fff5f0; 
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(255, 69, 0, 0.5);
+            width: 90%;
+            max-width: 900px;
+            padding: 40px;
+            margin: 20px auto;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #dc143c; 
+            margin-bottom: 20px;
+            font-family: 'Verdana', sans-serif;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #b22222; 
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .location {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff4500; 
+            margin-top: 30px;
+            text-align: left;
+            padding-left: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .steps {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left;
+            color: #333;
+        }
+
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #ffe4e1; 
+            border-radius: 12px;
+            border: 2px solid #ff6347; 
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.5);
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+            border-radius: 12px;
+            max-width: 50%;
+            height: auto;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #ff4500; 
+            font-weight: bold;
+            text-align: center;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>오늘은 배 터지게 먹자 day</h1>
+
+        <div class="description">
+            <p>오늘 하루는 맛있는 음식으로 배 터지게 먹어요! 다양한 음식을 즐기며 기분 좋은 하루를 보내세요.</p>
+        </div>
+
+        <div class="location">
+            <p><strong>여행 코스</strong></p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <p>▶ <strong>금수저</strong>에서 푸짐한 한식을 즐기세요.</p>
+                <img src="/한동대-금수저.jpeg" alt="금수저 한식">
+            </div>
+            <div class="step">
+                <p>▶ [버스302 10분 남광하우스토리-농협 양덕지점/ 도보 9분] <strong>두낫디스터브 양덕</strong>에 도착</p>
+                <p> → 맛있는 음식과 커피를 즐기며 잠시 휴식을 취하세요.</p>
+                <img src="/금수저-두낫디스터브.jpeg" alt="두낫디스터브 카페">
+            </div>
+            <div class="step">
+                <p>▶ [버스302 농협 양덕지점-농협 하나로 클럽 12분/ 도보 12분] <strong>댓끼리 샤브 짬뽕</strong>에 도착</p>
+                <p> → 매운 짬뽕과 샤브샤브를 함께 즐기며 식사를 마무리하세요.</p>
+                <img src="/두낫디스터브-댓끼리.jpeg" alt="댓끼리 샤브 짬뽕">
+            </div>
+
+            <div class="step">
+                <p>▶ [버스302 25분] <strong>한동대학교</strong> 도착</p>
+                <p> → 매운 짬뽕과 샤브샤브를 함께 즐기며 식사를 마무리하세요.</p>
+                <img src="/댓끼리-한동대.jpeg" alt="한동대학교">
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>맛있는 하루 되세요! 🍜🍲</p>
+        </div>
+    </div>
+
+</body>
+</html>

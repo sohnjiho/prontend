@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공부 좀 해볼까?</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #4a4a4a;
+            height: 100%;
+            overflow-y: auto; 
+            overflow-x: hidden;
+            background: linear-gradient(to right, #dcb28d, #a97d53, #8c5e3c);
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 900px;
+            padding: 40px;
+            margin: 20px auto;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #8c5e3c;
+            margin-bottom: 20px;
+            font-family: 'Verdana', sans-serif;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #6a4e49;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .location {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8c5e3c;
+            margin-top: 30px;
+            text-align: left;
+            padding-left: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .steps {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left;
+            color: #333;
+        }
+
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f4e1c1;
+            border-radius: 12px;
+            border: 2px solid #dcb28d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+            border-radius: 12px;
+            max-width: 50%;
+            height: auto;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #8c5e3c;
+            font-weight: bold;
+            text-align: center;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>공부 좀 해볼까?</h1>
+
+        <div class="description">
+            <p>오늘은 공부와 여유를 동시에! 맛있는 음식을 먹고, 스터디 카페에서 집중하며 시간을 보내세요.</p>
+        </div>
+
+        <div class="location">
+            <p><strong>여행 코스</strong></p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <p>▶ <strong> [학교 출발 302버스 25분] 스프커리 보울</strong></p>
+                <img src="/학교-스프커리보울.jpeg" alt="스프커리 보울 이미지">
+            </div>
+            <div class="step">
+                <p>▶ [도보 6분] <strong>멘토즈스터디카페</strong>에 도착</p>
+                <p> → 카페에서 공부를 시작하며 집중력을 높여보세요.</p>
+                <img src="/스프커리보울-멘토즈.jpeg" alt="멘토즈 스터디카페 이미지">
+            </div>
+            <div class="step">
+                <p>▶ [버스 209번 15분] <strong>남광하우스토리</strong>에서 하차</p>
+                <p> → 버스를 타고 가볍게 이동한 후, <strong>삼구4차</strong>에서 하차하여 도보로 이동</p>
+                <p>▶ 또는 [도보 26분] <strong>온정가</strong> 도착</p>
+                <p> 하루의 마무리를 온정가에서 편안하게 즐기세요.</p>
+                <img src="/멘토즈-온정가.jpeg" alt="온정가 이미지">
+            </div>
+            <div class="step">
+                <p>▶ [302버스 29분] <strong> 한동대학교 </strong> 도착</p>
+                <p> 하루 공부 끝 !</p>
+                <img src="/온정가-한동대.jpeg" alt="한동대학교 이미지">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>공부도, 휴식도 즐거운 하루 되세요! 📚☕</p>
+    </div>
+
+</body>
+</html>

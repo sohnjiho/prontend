@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍱한메추🍱</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: #ff6f61;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .left {
+            flex: 6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+        }
+        .image-map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .image-map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .right {
+            flex: 4;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .right iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #ff6f61;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        카페
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="image-map-container">
+                <img src="./cafemap.png" alt="카페 이미지 맵" usemap="#food-map" id="responsive-image">
+                <map name="food-map" id="food-map">
+                    <area shape="circle" alt="" title="" coords="751,127,19" href="카페/카페1/카페.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="817,241,17" href="카페/카페2/카페2.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="779,255,19" href="카페/카페3/카페3.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="705,393,17" href="카페/카페4/카페4.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="343,427,23" href="카페/카페5/카페5.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="589,457,21" href="카페/카페6/카페6.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="721,457,21" href="카페/카페7/카페7.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="895,447,19" href="카페/카페8/카페8.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1647,439,19" href="카페/카페9/카페9.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1285,561,21" href="카페/카페10/카페10.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1081,605,17" href="카페/카페11/카페11.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1063,647,23" href="카페/카페12/카페12.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1107,643,23" href="카페/카페13/카페13.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1457,585,21" href="카페/카페14/까페몬드.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1523,647,17" href="카페/카페15/두낫디스터브.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1472,642,18" href="카페/카페16/설빙.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1349,711,19" href="카페/카페17/이디야.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1160,712,18" href="카페/카페18/카페모캄보.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1191,743,19" href="카페/카페19/텐퍼센트.html" target="iframe" />
+                    <area shape="circle" alt="" title="" coords="1205,793,17" href="카페/카페20/히즈빈스.html" target="iframe" />
+                </map>
+            </div>
+        </div>
+        <div class="right">
+            <iframe name="iframe" src="about:blank"></iframe>
+        </div>
+    </div>
+    <footer>
+        © 2024 카페 페이지 | <a href="homepage2 searching.html" target="_blank">홈으로 돌아가기</a>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const image = document.getElementById('responsive-image');
+            const areas = document.querySelectorAll('map area');
+            const iframe = document.querySelector('iframe');
+
+            // 이미지의 실제 크기와 비율을 계산
+            const imageWidth = image.naturalWidth;
+            const imageHeight = image.naturalHeight;
+
+            // 좌표 비율을 계산하여 조정하는 함수
+            function adjustCoords() {
+                const containerWidth = image.clientWidth;
+                const containerHeight = image.clientHeight;
+
+                areas.forEach(area => {
+                    const originalCoords = area.getAttribute('coords').split(',').map(Number);
+                    const x = originalCoords[0];
+                    const y = originalCoords[1];
+                    const radius = originalCoords[2];
+
+                    // 이미지 크기에 맞춰서 좌표 변환 (비례 계산)
+                    const scaleX = containerWidth / imageWidth;
+                    const scaleY = containerHeight / imageHeight;
+
+                    const newX = Math.round(x * scaleX);
+                    const newY = Math.round(y * scaleY);
+                    const newRadius = Math.round(radius * scaleX); // 반지름 비례 변환
+
+                    // 비례적으로 조정된 좌표를 area에 설정
+                    area.coords = `${newX},${newY},${newRadius}`;
+                });
+            }
+
+            // 리사이즈 이벤트 발생 시 좌표 업데이트
+            window.addEventListener('resize', adjustCoords);
+
+            // 페이지 로드 후 첫 번째 좌표 계산
+            adjustCoords();
+
+            // 이미지 맵의 area 클릭 시 iframe에 링크 로드
+            areas.forEach(area => {
+                area.addEventListener('click', function(event) {
+                    event.preventDefault(); // 기본 동작 막기
+                    iframe.src = area.href; // iframe에 링크 로드
+                });
+            });
+        });
+    </script>
+</body>
+</html>

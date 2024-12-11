@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍱한메추🍱</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: #ff6f61;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .left {
+            flex: 6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+        }
+        .image-map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .image-map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .right {
+            flex: 4;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .right iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #ff6f61;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        중식
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="image-map-container">
+                <img src="./중국지도.jpg" alt="중식 이미지맵" usemap="#food-map" id="responsive-image">
+                <map name="food-map" id="food-map">
+                    <area shape="circle" data-original-coords="359,124,17" href="./중식/이비가짬뽕.html" target="iframe" alt="김치찌개">
+                    <area shape="circle" data-original-coords="748,145,16" href="./중식/탕화쿵푸.html" target="iframe" alt="비빔밥">
+                    <area shape="circle" data-original-coords="682,210,16" href="./중식/마라공방.html" target="iframe" alt="불고기">
+                    <area shape="circle" data-original-coords="671,243,15" href="./중식/홍콩반점.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="851,207,16" href="./중식/퓨전쓰촨.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1153,420,16" href="./중식/교동짬뽕.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1056,500,16" href="./중식/댓끼리 샤브 짬뽕.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1153,524,16" href="./중식/팔선.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1189,668,16" href="./중식/죽도양꼬치.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1153,725,16" href="./중식/온짬뽕 본점.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1202,803,16" href="./중식/짬뽕마스터.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1504,565,15" href="./중식/서태후.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1390,635,16" href="./중식/사천성.html" target="iframe" alt="떡볶이">
+                    <area shape="circle" data-original-coords="1341,694,16" href="./중식/삼봉차이나.html" target="iframe" alt="떡볶이">
+                </map>
+            </div>
+        </div>
+        <div class="right">
+            <iframe name="iframe" src="about:blank"></iframe>
+        </div>
+    </div>
+    <footer>
+        © 2024 중식 페이지 | <a href="homepage2 searching.html" target="_blank">홈으로 돌아가기</a>
+    </footer>
+
+    <script>
+        // 이미지 로딩 후 좌표 비율 계산
+        window.addEventListener('load', function() {
+            const image = document.getElementById('responsive-image');
+            const areas = document.querySelectorAll('map area');
+            const iframe = document.querySelector('iframe');
+
+            // 이미지의 실제 크기와 비율을 계산
+            const imageWidth = image.naturalWidth;
+            const imageHeight = image.naturalHeight;
+
+            // 이미지 크기가 조정될 때마다 좌표를 비례적으로 변환
+            window.addEventListener('resize', function() {
+                const containerWidth = image.clientWidth;
+                const containerHeight = image.clientHeight;
+
+                // 각 area의 좌표를 비례적으로 변환
+                areas.forEach(area => {
+                    const originalCoords = area.getAttribute('data-original-coords').split(',').map(Number);
+                    const x = originalCoords[0];
+                    const y = originalCoords[1];
+                    const radius = originalCoords[2];
+
+                    // 비율에 맞게 좌표와 반지름을 변환
+                    const scaleX = containerWidth / imageWidth;
+                    const scaleY = containerHeight / imageHeight;
+
+                    const newX = Math.round(x * scaleX);
+                    const newY = Math.round(y * scaleY);
+                    const newRadius = Math.round(radius * scaleX); // 반지름만 비례적으로 변환
+
+                    // 새로운 좌표로 area의 coords 설정
+                    area.coords = `${newX},${newY},${newRadius}`;
+                });
+            });
+
+            // 처음 로드 시에도 좌표를 맞춰준다.
+            window.dispatchEvent(new Event('resize'));
+
+            // 이미지 맵의 area 클릭 시 링크를 iframe에 표시
+            areas.forEach(area => {
+                area.addEventListener('click', function(event) {
+                    event.preventDefault(); // 기본 동작 막기
+                    iframe.src = area.href; // iframe에 링크 로드
+                });
+            });
+        });
+    </script>
+</body>
+</html>
